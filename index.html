@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sample HTML Page</title>
+
+    <!-- Basic CSS for layout and readability -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        button {
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        .message {
+            margin-top: 15px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to My Webpage</h1>
+
+        <!-- Simple form with basic input validation -->
+        <form id="sampleForm">
+            <label for="name">Enter your name:</label><br>
+            <input type="text" id="name" name="name" required /><br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <p id="output" class="message"></p>
+    </div>
+
+    <!-- JavaScript with error handling -->
+    <script>
+        document.getElementById('sampleForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            try {
+                const nameField = document.getElementById('name');
+                const nameValue = nameField.value.trim();
+
+                if (nameValue.length === 0) {
+                    alert('Please enter a valid name.');
+                    return;
+                }
+
+                document.getElementById('output').textContent = 'Hello, ' + nameValue + '!';
+            } catch (error) {
+                console.error('An unexpected error occurred:', error);
+                alert('Something went wrong. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>
